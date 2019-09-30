@@ -14,13 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder> {
-    private LayoutInflater inflater;
-    private ArrayList<CallsModel> data;
+   
+    private ArrayList<CallsModel> data = new ArrayList();
 
-    public CallsAdapter(Context ctx, ArrayList<CallsModel> data) {
-        inflater = LayoutInflater.from(ctx);
-        this.data = data;
-    }
     public void setData(List<CallsModel> data) {
         this.data.clear();
         this.data.addAll(data);

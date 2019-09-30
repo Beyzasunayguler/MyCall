@@ -29,22 +29,21 @@ public class MainActivity extends AppCompatActivity {
         loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
         callsAdapter= new CallsAdapter(MainActivity.this,null);
         MInterface mInterface=ApiClient.getClient().create(MInterface.class);
-        Call<List<CallsModel>> call=mInterface.getCalls();
-        call.enqueue(new Callback<List<CallsModel>>() {
+        Call<CallResult> call=mInterface.getCalls();
+        call.enqueue(new Callback<CallResult>() {
             @Override
-            public void onResponse(Call<List<CallsModel>> call, Response<List<CallsModel>> response) {
-                callsAdapter.setData(response.body());
+            public void onResponse(Call<CallResult> call, Response<CallResult> response) {
+                callsAdapter.setData(response.body().getCalls());
                 mRecyclerView.setAdapter(callsAdapter);
                 loadingBar.setVisibility(View.GONE);
             }
 
             @Override
-            public void onFailure(Call<List<CallsModel>> call, Throwable t) {
+            public void onFailure(Call<CallResult> call, Throwable t) {
                 loadingBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "Something went wrong, check the logs", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
             }
         });
-
     }
 }
