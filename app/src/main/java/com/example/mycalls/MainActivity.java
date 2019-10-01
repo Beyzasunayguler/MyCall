@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
         loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
-        callsAdapter= new CallsAdapter(MainActivity.this,null);
+        callsAdapter= new CallsAdapter();//MainActivity.this,null
         MInterface mInterface=ApiClient.getClient().create(MInterface.class);
         Call<CallResult> call=mInterface.getCalls();
         call.enqueue(new Callback<CallResult>() {
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<CallResult> call, Throwable t) {
                 loadingBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });

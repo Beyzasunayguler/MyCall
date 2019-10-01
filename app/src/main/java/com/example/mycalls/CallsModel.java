@@ -1,9 +1,12 @@
 package com.example.mycalls;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CallsModel {
+public class CallsModel implements Parcelable {
 
 
     @SerializedName("Id")
@@ -36,6 +39,49 @@ public class CallsModel {
     @SerializedName("Donuldu")
     @Expose
     public String donuldu;
+
+    protected CallsModel(Parcel in) {
+        id = in.readString();
+        cagriId = in.readString();
+        telNo = in.readString();
+        kullanici = in.readString();
+        zaman = in.readString();
+        caldi = in.readString();
+        cevaplandi = in.readString();
+        cekildi = in.readString();
+        kapandi = in.readString();
+        donuldu = in.readString();
+
+    }
+
+    public CallsModel(String id, String cagriId, String telNo, String kullanici, String zaman, String caldi, String cevaplandi,String cekildi, String kapandi, String donuldu) {
+        this.id=id;
+        this.cagriId=cagriId;
+        this.telNo=telNo;
+        this.kullanici=kullanici;
+        this.zaman=zaman;
+        this.caldi=caldi;
+        this.cevaplandi=cevaplandi;
+        this.cekildi=cekildi;
+        this.kapandi=kapandi;
+        this.donuldu=donuldu;
+    }
+    public static final Creator<CallsModel> CREATOR = new Creator<CallsModel>() {
+        @Override
+        public CallsModel createFromParcel(Parcel in) {
+            return new CallsModel(in);
+        }
+
+        @Override
+        public CallsModel[] newArray(int size) {
+            return new CallsModel[size];
+        }
+    };
+
+    public static Creator<CallsModel> getCREATOR() {
+        return CREATOR;
+    }
+
 
     public String getCagriId() {
         return cagriId;
@@ -122,4 +168,22 @@ public class CallsModel {
         this.donuldu = donuldu;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(kullanici);
+        parcel.writeString(zaman);
+        parcel.writeString(caldi);
+        parcel.writeString(cekildi);
+        parcel.writeString(cevaplandi);
+        parcel.writeString(donuldu);
+        parcel.writeString(telNo);
+        parcel.writeString(kapandi);
+        parcel.writeString(cagriId);
+        parcel.writeString(id);
+    }
 }

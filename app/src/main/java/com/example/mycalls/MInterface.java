@@ -1,11 +1,9 @@
 package com.example.mycalls;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface MInterface {
-    @GET("cagrilar?")
+    @GET("cagrilar")
     Call<CallResult>  getCalls();
 }
