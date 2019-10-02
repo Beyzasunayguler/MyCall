@@ -1,15 +1,21 @@
 package com.example.mycalls;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
+import com.google.android.material.tabs.TabLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,52 +27,55 @@ import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ProgressBar loadingBar;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     private RecyclerView mRecyclerView;
     private CallsAdapter callsAdapter;
-    SwipeRefreshLayout mSwipeRefreshLayout;
     private ArrayList<CallsModel> data = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
-        callsAdapter = new CallsAdapter();//MainActivity.this,null
-        mRecyclerView.setAdapter(callsAdapter);
-        MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-        Call<CallResult> call = mInterface.getCalls();
-        call.enqueue(new Callback<CallResult>() {
-            @Override
-            public void onResponse(Call<CallResult> call, Response<CallResult> response) {
-                callsAdapter.setData(response.body().getCalls());
-                mRecyclerView.setAdapter(callsAdapter);
-                loadingBar.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onFailure(Call<CallResult> call, Throwable t) {
-                loadingBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        mSwipeRefreshLayout.setRefreshing(false);
-
-                    }
-                }, 5000);
-            }
-
-        });
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new MainFragment(), "CAGRI");
+        adapter.addFragment(new DetailFragment(), "CAGRI AYRINTISI");
+        viewPager.setAdapter(adapter);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> fragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            fragmentTitleList.add(title);
+        }
+
+
+    }
 }

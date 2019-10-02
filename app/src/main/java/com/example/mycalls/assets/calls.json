@@ -1,0 +1,53 @@
+{
+  "cagrilar":
+  [
+    {
+      "Id": "17",
+      "CagriId": "970d3b13-f675-4f70-88ce-75b7c9a8da14",
+      "TelNo": "905050532896",
+      "Kullanici": "RAMAZAN AYATA",
+      "Zaman": "30.09.2019 17:05:16",
+      "Caldi": "1",
+      "Cevaplandi": "1",
+      "Cekildi": "0",
+      "Kapandi": "1",
+      "Donuldu": "0"
+    },
+    {
+      "Id": "16",
+      "CagriId": "a9da4a73-ac0a-4400-99c2-934f48440190",
+      "TelNo": "905050532896",
+      "Kullanici": "YUSUF ÅAHÄ°N",
+      "Zaman": "30.09.2019 16:58:01",
+      "Caldi": "2",
+      "Cevaplandi": "1",
+      "Cekildi": "0",
+      "Kapandi": "1",
+      "Donuldu": "0"
+    },
+    {
+      "Id": "15",
+      "CagriId": "56dc4e1d-a1bc-4174-b598-274c9d1bf408",
+      "TelNo": "905537660411",
+      "Kullanici": "RAMAZAN AYATA",
+      "Zaman": "30.09.2019 16:43:19",
+      "Caldi": "1",
+      "Cevaplandi": "1",
+      "Cekildi": "0",
+      "Kapandi": "1",
+      "Donuldu": "0"
+    },
+    {
+      "Id": "12",
+      "CagriId": "2d7935ec-aa56-4841-9918-20ca4f70d855",
+      "TelNo": "905332317702",
+      "Kullanici": "GÃ–ZDE ALPTEKÄ°N",
+      "Zaman": "30.09.2019 14:06:35",
+      "Caldi": "0",
+      "Cevaplandi": "0",
+      "Cekildi": "0",
+      "Kapandi": "1",
+      "Donuldu": "0"
+    }
+  ]
+}
