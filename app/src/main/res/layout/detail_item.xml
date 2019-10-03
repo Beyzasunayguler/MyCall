@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="55dp"
+    xmlns:grid="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginRight="16dp">
@@ -13,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_column="0"
+        grid:layout_columnWeight="1"
         android:text="@string/deneme"
         android:textAlignment="center"
         android:textStyle="bold" />
@@ -22,7 +23,7 @@
         android:id="@+id/cevaplandıText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_column="1"
+        grid:layout_columnWeight="1"
         android:layout_margin="10dp"
         android:text="@string/deneme"
         android:textAlignment="center"
@@ -33,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_column="2"
+        grid:layout_columnWeight="1"
         android:text="@string/deneme"
         android:textAlignment="center"
         android:textStyle="bold" />
@@ -43,10 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_column="3"
+        grid:layout_columnWeight="1"
         android:text="@string/deneme"
         android:textAlignment="center"
         android:textStyle="bold" />
 
 
-</GridLayout>
+</androidx.gridlayout.widget.GridLayout>

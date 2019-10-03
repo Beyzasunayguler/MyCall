@@ -9,7 +9,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -36,29 +35,25 @@ public class MainFragment extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
+                MInterface mInterface = ApiClient.getClient().create(MInterface.class);
+                Call<CallResult> call = mInterface.getCalls();
+                call.enqueue(new Callback<CallResult>() {
+                    @Override
+                    public void onResponse(Call<CallResult> call, Response<CallResult> response) {
+                        callsAdapter.setData(response.body().getCalls());
+                        mRecyclerView.setAdapter(callsAdapter);
+                        loadingBar.setVisibility(View.GONE);
                         mSwipeRefreshLayout.setRefreshing(false);
-                        MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-                        Call<CallResult> call = mInterface.getCalls();
-                        call.enqueue(new Callback<CallResult>() {
-                            @Override
-                            public void onResponse(Call<CallResult> call, Response<CallResult> response) {
-                                callsAdapter.setData(response.body().getCalls());
-                                mRecyclerView.setAdapter(callsAdapter);
-                                loadingBar.setVisibility(View.GONE);
-                            }
-
-                            @Override
-                            public void onFailure(Call<CallResult> call, Throwable t) {
-                                loadingBar.setVisibility(View.GONE);
-                                Toast.makeText(getContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
-                                t.printStackTrace();
-                            }
-                        });
                     }
-                }, 2500);
 
+                    @Override
+                    public void onFailure(Call<CallResult> call, Throwable t) {
+                        loadingBar.setVisibility(View.GONE);
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        Toast.makeText(getContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
+                        t.printStackTrace();
+                    }
+                });
             }
         });
         MInterface mInterface = ApiClient.getClient().create(MInterface.class);
@@ -79,7 +74,6 @@ public class MainFragment extends Fragment {
             }
         });
         return mainView;
-
     }
 }
 

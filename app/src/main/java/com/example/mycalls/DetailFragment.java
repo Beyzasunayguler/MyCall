@@ -35,9 +35,6 @@ public class DetailFragment extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        mSwipeRefreshLayout.setRefreshing(false);
                         MInterface mInterface = ApiClient.getClient().create(MInterface.class);
                         Call<CallResult> call = mInterface.getCalls();
                         call.enqueue(new Callback<CallResult>() {
@@ -45,19 +42,18 @@ public class DetailFragment extends Fragment {
                             public void onResponse(Call<CallResult> call, Response<CallResult> response) {
                                 detailAdapter.setData(response.body().getCalls());
                                 mRecyclerView.setAdapter(detailAdapter);
+                                mSwipeRefreshLayout.setRefreshing(false);
                                 loadingBar.setVisibility(View.GONE);
                             }
 
                             @Override
                             public void onFailure(Call<CallResult> call, Throwable t) {
                                 loadingBar.setVisibility(View.GONE);
+                                mSwipeRefreshLayout.setRefreshing(false);
                                 Toast.makeText(getContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
                                 t.printStackTrace();
                             }
                         });
-                    }
-                }, 2500);
-
             }
         });
         MInterface mInterface = ApiClient.getClient().create(MInterface.class);
