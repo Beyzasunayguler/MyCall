@@ -42,22 +42,23 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
         TextView cevaplandiText;
         TextView cekildiText;
         TextView donulduText;
+        TextView kapandıText;
 
         public DetailHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         public void bind(final CallsModel data) {
-
+            kapandıText=itemView.findViewById(R.id.kapandıText);
             caldiText = itemView.findViewById(R.id.caldıText);
             cevaplandiText = itemView.findViewById(R.id.cevaplandıText);
             cekildiText = itemView.findViewById(R.id.cekildiText);
             donulduText = itemView.findViewById(R.id.donulduText);
+           kapandıText.setText(data.kapandi);
             caldiText.setText(data.caldi);
             cevaplandiText.setText(data.cevaplandi);
             cekildiText.setText(data.cekildi);
             donulduText.setText(data.donuldu);
-
         }
     }
 }

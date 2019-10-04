@@ -45,10 +45,16 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
         TextView kullaniciText;
         TextView telnoText;
         TextView zamanText;
+        TextView idNumText;
+        TextView userText;
+        TextView phoneText;
+        TextView timeText;
+
 
 
         public CallsHolder(@NonNull View itemView) {
             super(itemView);
+
         }
 
         public void bind(final CallsModel data) {

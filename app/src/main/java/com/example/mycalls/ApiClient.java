@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static Retrofit retrofit=null;
-    private static String Base_Url="https://api.myjson.com/bins/";
+    private static String Base_Url="http://192.168.2.156:10228/";
 
     public static Retrofit getClient(){
         if (retrofit==null){

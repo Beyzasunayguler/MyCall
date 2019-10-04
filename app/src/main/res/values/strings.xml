@@ -2,4 +2,12 @@
     <string name="app_name">MyCalls</string>
     <string name="deneme">deneme</string>
     <string name="kullan_c">Kullanıcı:</string>
+    <string name="zaman">Zaman</string>
+    <string name="telefon">Telefon</string>
+    <string name="donuldu">Donuldu</string>
+    <string name="cekildi">Cekildi</string>
+    <string name="cevapland">Cevaplandı</string>
+    <string name="cald">Caldı</string>
+    <string name="kapandı">Kapandı</string>
+    <string name="d_n_ld">Dönüldü:</string>
 </resources>

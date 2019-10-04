@@ -11,7 +11,10 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:elevation="6dp"
-        app:tabTextColor="@color/colorAccent"
+        app:tabTextColor="@color/textColor"
+        android:backgroundTint="@color/backgroundTint"
+        android:outlineSpotShadowColor="#BBDEFB"
+        android:textAlignment="center"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <androidx.viewpager.widget.ViewPager

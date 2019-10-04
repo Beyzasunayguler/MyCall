@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MainFragment(), "CAGRI");
-        adapter.addFragment(new DetailFragment(), "CAGRI AYRINTISI");
+        adapter.addFragment(new MainFragment(), "ÇAĞRI");
+        adapter.addFragment(new DetailFragment(), "ÇAĞRI AYRINTISI");
         viewPager.setAdapter(adapter);
     }
 
@@ -75,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
             mFragmentList.add(fragment);
             fragmentTitleList.add(title);
         }
+        /*
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragmentTitleList.get(position);
+        }
+
+         */
 
 
     }
