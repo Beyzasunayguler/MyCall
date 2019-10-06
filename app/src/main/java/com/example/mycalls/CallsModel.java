@@ -39,6 +39,10 @@ public class CallsModel implements Parcelable {
     @SerializedName("Donuldu")
     @Expose
     public String donuldu;
+    @SerializedName("Mesaj")
+    @Expose
+    public String mesaj;
+
 
     protected CallsModel(Parcel in) {
         id = in.readString();
@@ -51,10 +55,11 @@ public class CallsModel implements Parcelable {
         cekildi = in.readString();
         kapandi = in.readString();
         donuldu = in.readString();
+        mesaj=in.readString();
 
     }
 
-    public CallsModel(String id, String cagriId, String telNo, String kullanici, String zaman, String caldi, String cevaplandi,String cekildi, String kapandi, String donuldu) {
+    public CallsModel(String id, String cagriId, String telNo, String kullanici, String zaman, String caldi, String cevaplandi,String cekildi, String kapandi, String donuldu,String mesaj) {
         this.id=id;
         this.cagriId=cagriId;
         this.telNo=telNo;
@@ -65,6 +70,7 @@ public class CallsModel implements Parcelable {
         this.cekildi=cekildi;
         this.kapandi=kapandi;
         this.donuldu=donuldu;
+        this.mesaj=mesaj;
     }
     public static final Creator<CallsModel> CREATOR = new Creator<CallsModel>() {
         @Override
@@ -168,6 +174,9 @@ public class CallsModel implements Parcelable {
         this.donuldu = donuldu;
     }
 
+    public String getMesaj(){return mesaj;}
+    public void setMesaj(String mesaj){this.mesaj=mesaj;}
+
     @Override
     public int describeContents() {
         return 0;
@@ -185,5 +194,6 @@ public class CallsModel implements Parcelable {
         parcel.writeString(kapandi);
         parcel.writeString(cagriId);
         parcel.writeString(id);
+        parcel.writeString(mesaj);
     }
 }

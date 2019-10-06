@@ -1,6 +1,7 @@
 package com.example.mycalls;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,11 +46,6 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
         TextView kullaniciText;
         TextView telnoText;
         TextView zamanText;
-        TextView idNumText;
-        TextView userText;
-        TextView phoneText;
-        TextView timeText;
-
 
 
         public CallsHolder(@NonNull View itemView) {
@@ -66,6 +62,16 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
             kullaniciText.setText(data.kullanici);
             telnoText.setText(data.telNo);
             zamanText.setText(data.zaman);
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), InfoActivity.class);
+                    itemView.getContext().startActivity(intent);
+                    return true;
+                }
+            });
+
 
         }
     }

@@ -19,5 +19,16 @@ public class CallResult {
     public void setCalls(List<CallsModel> calls) {
         this.calls = calls;
     }
+
+    @SerializedName("ayrıntılar")
+    @Expose
+    public List<CallsModel> infos = null;
+    public List<CallsModel> getInfos() {
+        return infos;
+    }
+    public void setInfos (List<CallsModel> infos) {
+        this.infos = infos;
+    }
+
 }
 

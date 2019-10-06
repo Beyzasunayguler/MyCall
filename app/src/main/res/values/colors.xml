@@ -7,4 +7,7 @@
     <color name="backgroundTint">#1976D2</color>
     <color name="background">#2196F3</color>
     <color name="dataTextColor">#212121</color>
+    <color name="orangeColor">#FF5722</color>
+    <color name="greenColor">#738b28</color>
+    <color name="redColor">#FF0000</color>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.mycalls;
 
+
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +56,38 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
             cevaplandiText = itemView.findViewById(R.id.cevaplandıText);
             cekildiText = itemView.findViewById(R.id.cekildiText);
             donulduText = itemView.findViewById(R.id.donulduText);
-           kapandıText.setText(data.kapandi);
+
+          if ("0".equals(data.cevaplandi)) {
+                cevaplandiText.setTextColor(Color.parseColor("#738b28"));
+                donulduText.setTextColor(Color.parseColor("#738b28"));
+                cekildiText.setTextColor(Color.parseColor("#738b28"));
+                caldiText.setTextColor(Color.parseColor("#738b28"));
+                kapandıText.setTextColor(Color.parseColor("#738b28"));
+            } else {
+                cevaplandiText.setTextColor(Color.BLACK);
+            }
+
+            if ("0".equals(data.donuldu)){
+                donulduText.setTextColor(Color.parseColor("#FF5722"));
+                cekildiText.setTextColor(Color.parseColor("#FF5722"));
+                caldiText.setTextColor(Color.parseColor("#FF5722"));
+                kapandıText.setTextColor(Color.parseColor("#FF5722"));
+                cevaplandiText.setTextColor(Color.parseColor("#FF5722"));
+            } else if ("1".equals(data.cevaplandi) && "1".equals(data.donuldu)) {
+                cevaplandiText.setTextColor(Color.parseColor("#FF0000"));
+                donulduText.setTextColor(Color.parseColor("#FF0000"));
+                cekildiText.setTextColor(Color.parseColor("#FF0000"));
+                caldiText.setTextColor(Color.parseColor("#FF0000"));
+                kapandıText.setTextColor(Color.parseColor("#FF0000"));
+            }
+
+            kapandıText.setText(data.kapandi);
             caldiText.setText(data.caldi);
             cevaplandiText.setText(data.cevaplandi);
             cekildiText.setText(data.cekildi);
             donulduText.setText(data.donuldu);
+
+
         }
     }
 }
