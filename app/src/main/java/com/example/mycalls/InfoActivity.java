@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -19,7 +18,7 @@ import retrofit2.Response;
 public class InfoActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ProgressBar loadingBar;
-    InfoAdapter infoAdapter;
+    private InfoAdapter infoAdapter;
     private GridLayout mGridLayout;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -27,15 +26,13 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mGridLayout = (GridLayout) findViewById(R.id.fragment_info_grid_layout);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
         infoAdapter = new InfoAdapter();
         mRecyclerView.setAdapter(infoAdapter);
-        MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-        Call<CallResult> call = mInterface.getInfo();
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -62,9 +59,11 @@ public class InfoActivity extends AppCompatActivity {
                 });
             }
         });
+        MInterface mInterface = ApiClient.getClient().create(MInterface.class);
+        Call<CallResult> call = mInterface.getInfo();
         call.enqueue(new Callback<CallResult>() {
             @Override
-            public void onResponse(Call<CallResult> info, Response<CallResult> response) {
+            public void onResponse(Call<CallResult> call, Response<CallResult> response) {
                 infoAdapter.setData(response.body().getInfos());
                 mRecyclerView.setAdapter(infoAdapter);
                 loadingBar.setVisibility(View.GONE);
@@ -73,12 +72,11 @@ public class InfoActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CallResult> info, Throwable t) {
+            public void onFailure(Call<CallResult> call, Throwable t) {
                 loadingBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + info.request().url(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });
-
     }
 }

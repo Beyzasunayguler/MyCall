@@ -15,6 +15,8 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
     private ArrayList<CallsModel> data = new ArrayList();
 
     public void setData(List<CallsModel> data) {
+        this.data.clear();
+        this.data.addAll(data);
         notifyDataSetChanged();
     }
 
@@ -49,12 +51,12 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
 
         public void bind(CallsModel data) {
             //mIdText=itemView.findViewById(R.id.id);
-            kullaniciText = itemView.findViewById(R.id.deneme);
+            kullaniciText = itemView.findViewById(R.id.kullanıcıInfoText);
             // telnoText = itemView.findViewById(R.id.telnoText);
             // zamanText = itemView.findViewById(R.id.zamanText);
             //cevaplandiText = itemView.findViewById(R.id.cevaplandıText);
             //mIdText.setText(data.id);
-            // kullaniciText.setText(data.kullanici);
+            kullaniciText.setText(data.kullanici);
             // telnoText.setText(data.telNo);
             // zamanText.setText(data.zaman);
             //mesajText=itemView.findViewById(R.id.mesajText);
