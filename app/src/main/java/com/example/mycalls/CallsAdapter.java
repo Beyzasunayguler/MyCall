@@ -2,6 +2,7 @@ package com.example.mycalls;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,10 +59,23 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
             kullaniciText = itemView.findViewById(R.id.textView);
             telnoText = itemView.findViewById(R.id.telnoText);
             zamanText = itemView.findViewById(R.id.zamanText);
+            if ("0".equals(data.kullanici)) {
+                mIdText.setTextColor(Color.parseColor("#738b28"));
+               kullaniciText.setTextColor(Color.parseColor("#738b28"));
+                telnoText.setTextColor(Color.parseColor("#738b28"));
+                zamanText.setTextColor(Color.parseColor("#738b28"));
+
+            } else {
+                mIdText.setTextColor(Color.BLACK);
+                kullaniciText.setTextColor(Color.BLACK);
+                telnoText.setTextColor(Color.BLACK);
+                zamanText.setTextColor(Color.BLACK);
+            }
             mIdText.setText(data.id);
             kullaniciText.setText(data.kullanici);
             telnoText.setText(data.telNo);
             zamanText.setText(data.zaman);
+
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

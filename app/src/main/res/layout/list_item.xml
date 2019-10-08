@@ -13,9 +13,8 @@
 
     <TextView
         android:id="@+id/id"
-        android:layout_width="wrap_content"
+        android:layout_width="10dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:gravity="center"
         android:text="@string/kullan_c"
         android:textAlignment="center"
@@ -27,7 +26,6 @@
         android:id="@+id/textView"
         android:layout_width="81dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:text="@string/kullan_c"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"
@@ -36,9 +34,8 @@
 
     <TextView
         android:id="@+id/telnoText"
-        android:layout_width="wrap_content"
+        android:layout_width="81dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:gravity="center"
         android:text="@string/deneme"
         android:textAlignment="center"
@@ -50,7 +47,6 @@
         android:id="@+id/zamanText"
         android:layout_width="89dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:text="@string/deneme"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"

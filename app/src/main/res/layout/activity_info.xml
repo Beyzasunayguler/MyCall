@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
-        <androidx.gridlayout.widget.GridLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
+        <LinearLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
             android:id="@+id/fragment_info_grid_layout"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -26,29 +26,19 @@
             android:background="@color/background">
 
             <TextView
-                android:id="@+id/firstTitle"
+                android:id="@+id/ıdTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Id"
+                android:text=" Id"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
                 android:textStyle="bold"
                 grid:layout_columnWeight="1" />
 
-            <TextView
-                android:id="@+id/secondTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="TelNo"
-                android:textAlignment="center"
-                android:textColor="@color/textColor"
-                android:textStyle="bold"
-                grid:layout_columnWeight="1" />
 
             <TextView
-                android:id="@+id/thirdTitle"
+                android:id="@+id/userTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -57,9 +47,40 @@
                 android:textColor="@color/textColor"
                 android:textStyle="bold"
                 grid:layout_columnWeight="1" />
+            <TextView
+                android:id="@+id/phoneTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="   TelNo"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                grid:layout_columnWeight="1" />
+            <TextView
+                android:id="@+id/messageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="       Mesaj"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                grid:layout_columnWeight="1" />
 
             <TextView
-                android:id="@+id/fourthTitle"
+                android:id="@+id/answerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Cevap"
+                android:textAlignment="center"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                grid:layout_columnWeight="1" />
+
+            <TextView
+                android:id="@+id/timeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -69,29 +90,9 @@
                 android:textStyle="bold"
                 grid:layout_columnWeight="1" />
 
-            <TextView
-                android:id="@+id/fiveTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Mesaj"
-                android:textAlignment="center"
-                android:textColor="@color/textColor"
-                android:textStyle="bold"
-                grid:layout_columnWeight="1" />
-            <TextView
-                android:id="@+id/sixTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Cevaplandı"
-                android:textAlignment="center"
-                android:textColor="@color/textColor"
-                android:textStyle="bold"
-                grid:layout_columnWeight="1" />
 
 
-        </androidx.gridlayout.widget.GridLayout>
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

@@ -38,28 +38,31 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoHolder> {
     }
 
     public static class InfoHolder extends RecyclerView.ViewHolder {
-        // TextView cevaplandiText;
-        //TextView mIdText;
+        TextView cevaplandiText;
+        TextView mIdText;
         TextView kullaniciText;
-        //  TextView telnoText;
-        // TextView zamanText;
-        // TextView mesajText;
+        TextView telnoText;
+        TextView zamanText;
+        TextView mesajText;
 
         public InfoHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         public void bind(CallsModel data) {
-            //mIdText=itemView.findViewById(R.id.id);
+            mIdText=itemView.findViewById(R.id.idInfoText);
             kullaniciText = itemView.findViewById(R.id.kullanıcıInfoText);
-            // telnoText = itemView.findViewById(R.id.telnoText);
-            // zamanText = itemView.findViewById(R.id.zamanText);
-            //cevaplandiText = itemView.findViewById(R.id.cevaplandıText);
-            //mIdText.setText(data.id);
+            mesajText=itemView.findViewById(R.id.mesajText);
+            telnoText = itemView.findViewById(R.id.telnoInfoText);
+            zamanText = itemView.findViewById(R.id.zamanInfoText);
+            cevaplandiText = itemView.findViewById(R.id.cevaplandıInfoText);
+            mIdText.setText(data.id);
             kullaniciText.setText(data.kullanici);
-            // telnoText.setText(data.telNo);
-            // zamanText.setText(data.zaman);
-            //mesajText=itemView.findViewById(R.id.mesajText);
+            telnoText.setText(data.telNo);
+            zamanText.setText(data.zaman);
+            cevaplandiText.setText(data.cevaplandi);
+            mesajText.setText(data.mesaj);
+
         }
     }
 }

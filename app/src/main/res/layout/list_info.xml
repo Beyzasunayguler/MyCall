@@ -12,14 +12,76 @@
     android:verticalSpacing="2dp">
 
     <TextView
-        android:id="@+id/kullanıcıInfoText"
-        android:layout_width="wrap_content"
+        android:id="@+id/idInfoText"
+        android:layout_width="15dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:textSize="13dp"
+        android:gravity="center"
+        android:text="@string/kullan_c"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        grid:layout_columnWeight="1" />
+
+    <TextView
+        android:id="@+id/kullanıcıInfoText"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:gravity="center"
+        android:text="@string/kullan_c"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        grid:layout_columnWeight="1" />
+
+    <TextView
+        android:id="@+id/telnoInfoText"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textStyle="bold"
         android:gravity="center"
         android:text="@string/kullan_c"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"
-        android:textStyle="bold" />
+        grid:layout_columnWeight="1" />
+
+    <TextView
+        android:id="@+id/mesajText"
+        android:layout_width="89dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:text="@string/kullan_c"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        grid:layout_columnWeight="1" />
+
+    <TextView
+        android:id="@+id/cevaplandıInfoText"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="13dp"
+        android:text="@string/kullan_c"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        grid:layout_columnWeight="1" />
+
+
+    <TextView
+        android:id="@+id/zamanInfoText"
+        android:layout_width="89dp"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/kullan_c"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        grid:layout_columnWeight="1" />
 
 </androidx.gridlayout.widget.GridLayout>

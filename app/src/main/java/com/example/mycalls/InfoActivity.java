@@ -1,13 +1,13 @@
 package com.example.mycalls;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.gridlayout.widget.GridLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -19,14 +19,14 @@ public class InfoActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ProgressBar loadingBar;
     private InfoAdapter infoAdapter;
-    private GridLayout mGridLayout;
+    private LinearLayout linearLayout;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        mGridLayout = (GridLayout) findViewById(R.id.fragment_info_grid_layout);
+        linearLayout = (LinearLayout) findViewById(R.id.fragment_info_grid_layout);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,7 +46,7 @@ public class InfoActivity extends AppCompatActivity {
                         mSwipeRefreshLayout.setRefreshing(false);
                         loadingBar.setVisibility(View.GONE);
                         mRecyclerView.setVisibility(View.VISIBLE);
-                        mGridLayout.setVisibility(View.VISIBLE);
+                        linearLayout.setVisibility(View.VISIBLE);
                     }
 
                     @Override
@@ -68,7 +68,7 @@ public class InfoActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(infoAdapter);
                 loadingBar.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
-                mGridLayout.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
             }
 
             @Override

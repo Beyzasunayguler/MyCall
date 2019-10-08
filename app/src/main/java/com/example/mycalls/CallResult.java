@@ -20,7 +20,7 @@ public class CallResult {
         this.calls = calls;
     }
 
-    @SerializedName("ayrıntılar")
+    @SerializedName("ayrintilar")
     @Expose
     public List<CallsModel> infos = null;
     public List<CallsModel> getInfos() {
