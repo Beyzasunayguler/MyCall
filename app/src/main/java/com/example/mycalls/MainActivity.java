@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,19 +51,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-        gridLayout=(GridLayout) findViewById(R.id.fragment_main_grid_layout);
+        gridLayout = (GridLayout) findViewById(R.id.fragment_main_grid_layout);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
         callsAdapter = new CallsAdapter();//MainActivity.this,null
         mRecyclerView.setAdapter(callsAdapter);
-       mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        //mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.HORIZONTAL));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DATE);
+        String date = day + "." + (month + 1) + "." + (year);
+        //Toast.makeText(MainActivity.this, date, Toast.LENGTH_SHORT).show();
+
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DATE);
+                String date = day + "." + (month + 1) + "." + (year);
+                //Toast.makeText(MainActivity.this, date, Toast.LENGTH_SHORT).show();
                 MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-                Call<CallResult> call = mInterface.getCalls();
+                Call<CallResult> call = mInterface.getCallsWithDate(date);
                 call.enqueue(new Callback<CallResult>() {
                     @Override
                     public void onResponse(Call<CallResult> call, Response<CallResult> response) {
@@ -84,8 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
         MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-        Call<CallResult> call = mInterface.getCalls();
+        Call<CallResult> call = mInterface.getCallsWithDate(date);
         call.enqueue(new Callback<CallResult>() {
             @Override
             public void onResponse(Call<CallResult> call, Response<CallResult> response) {
@@ -104,25 +119,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.calendar_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener(){
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String calculatedDate = dayOfMonth + "."+ (month + 1) + "." + (year);
+                String calculatedDate = dayOfMonth + "." + (month + 1) + "." + (year);
                 MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-                Call<CallResult> call = mInterface.getCallsWithDate("Başlık",calculatedDate);
+                Call<CallResult> call = mInterface.getCallsWithDate(calculatedDate);
                 call.enqueue(new Callback<CallResult>() {
                     @Override
                     public void onResponse(Call<CallResult> call, Response<CallResult> response) {
@@ -144,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, year, month, day);
         datePickerDialog.show();
-                return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
+
     }
 }

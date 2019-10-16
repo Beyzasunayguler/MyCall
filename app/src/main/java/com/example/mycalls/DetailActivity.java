@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,6 +31,8 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        Intent intent=getIntent();
+        intent.getExtras();
         linearLayout = (LinearLayout) findViewById(R.id.fragment_detail_grid_layout);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
@@ -36,10 +41,25 @@ public class DetailActivity extends AppCompatActivity {
         detailAdapter = new DetailAdapter();//MainActivity.this,null
         mRecyclerView.setAdapter(detailAdapter);
         mRecyclerView.setHasFixedSize(true);
+        /*
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DATE);
+        String date = day + "." + (month + 1) + "." + (year);
+
+         */
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+               /* Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DATE);
+                String date = day + "." + (month + 1) + "." + (year);
+
+                */
                 MInterface mInterface = ApiClient.getClient().create(MInterface.class);
                 Call<CallResult> call = mInterface.getCalls();
                 call.enqueue(new Callback<CallResult>() {
