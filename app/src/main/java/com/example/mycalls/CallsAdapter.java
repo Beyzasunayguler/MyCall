@@ -47,6 +47,9 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
         TextView kullaniciText;
         TextView telnoText;
         TextView zamanText;
+        TextView firmaAdiText;
+        TextView subeText;
+        TextView kapamaZamanText;
 
 
         public CallsHolder(@NonNull View itemView) {
@@ -59,28 +62,52 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
             kullaniciText = itemView.findViewById(R.id.textView);
             telnoText = itemView.findViewById(R.id.telnoText);
             zamanText = itemView.findViewById(R.id.zamanText);
-            if ("0".equals(data.kullanici)) {
+            firmaAdiText=itemView.findViewById(R.id.firmaAdiText);
+            subeText =itemView.findViewById(R.id.subeText);
+            kapamaZamanText=itemView.findViewById(R.id.kapamaZamanText);
+
+            if ("1".equals(data.cevaplandi)){
                 mIdText.setTextColor(Color.parseColor("#738b28"));
-               kullaniciText.setTextColor(Color.parseColor("#738b28"));
+                kullaniciText.setTextColor(Color.parseColor("#738b28"));
                 telnoText.setTextColor(Color.parseColor("#738b28"));
                 zamanText.setTextColor(Color.parseColor("#738b28"));
+                firmaAdiText.setTextColor(Color.parseColor("#738b28"));
+                subeText.setTextColor(Color.parseColor("#738b28"));
+                kapamaZamanText.setTextColor(Color.parseColor("#738b28"));
+            }
 
-            } else {
-                mIdText.setTextColor(Color.BLACK);
-                kullaniciText.setTextColor(Color.BLACK);
-                telnoText.setTextColor(Color.BLACK);
-                zamanText.setTextColor(Color.BLACK);
+            if ("1".equals(data.donuldu)){
+                mIdText.setTextColor(Color.parseColor("#FF5722"));
+                kullaniciText.setTextColor(Color.parseColor("#FF5722"));
+                telnoText.setTextColor(Color.parseColor("#FF5722"));
+                zamanText.setTextColor(Color.parseColor("#FF5722"));
+                firmaAdiText.setTextColor(Color.parseColor("#FF5722"));
+                subeText.setTextColor(Color.parseColor("#FF5722"));
+                kapamaZamanText.setTextColor(Color.parseColor("#FF5722"));
+
+
+            }else if ("0".equals(data.cevaplandi)&& "0".equals(data.donuldu)){
+                mIdText.setTextColor(Color.parseColor("#FF0000"));
+                kullaniciText.setTextColor(Color.parseColor("#FF0000"));
+                telnoText.setTextColor(Color.parseColor("#FF0000"));
+                zamanText.setTextColor(Color.parseColor("#FF0000"));
+                firmaAdiText.setTextColor(Color.parseColor("#FF0000"));
+                subeText.setTextColor(Color.parseColor("#FF0000"));
+                kapamaZamanText.setTextColor(Color.parseColor("#FF0000"));
             }
             mIdText.setText(data.id);
             kullaniciText.setText(data.kullanici);
             telnoText.setText(data.telNo);
-            zamanText.setText(data.zaman);
+            zamanText.setText(data.aramaZaman);
+            firmaAdiText.setText(data.firmaAdi);
+            subeText.setText(data.subeAdi);
+            kapamaZamanText.setText(data.kapatZaman);
 
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(), InfoActivity.class);
+                    Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
                     itemView.getContext().startActivity(intent);
                     return true;
                 }

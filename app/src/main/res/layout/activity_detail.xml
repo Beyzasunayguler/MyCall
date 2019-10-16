@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
-        <LinearLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
+        <androidx.gridlayout.widget.GridLayout xmlns:grid="http://schemas.android.com/apk/res-auto"
             android:id="@+id/fragment_detail_grid_layout"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -25,30 +25,42 @@
             android:background="@color/background">
 
             <TextView
+                android:id="@+id/zeroTitle"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Id"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                grid:layout_columnWeight="1" />
+
+
+            <TextView
                 android:id="@+id/firstTitle"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Çağrı"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textColor="@color/textColor"
                 android:textStyle="bold"
                 grid:layout_columnWeight="1" />
 
             <TextView
                 android:id="@+id/secondTitle"
-                android:layout_width="150dp"
+                android:layout_width="115dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Cevaplandı"
-                android:textAlignment="center"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/textColor"
                 android:textStyle="bold"
                 grid:layout_columnWeight="1" />
 
             <TextView
                 android:id="@+id/thirdTitle"
-                android:layout_width="160dp"
+                android:layout_width="115dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Çekildi"
@@ -59,7 +71,7 @@
 
             <TextView
                 android:id="@+id/fourthTitle"
-                android:layout_width="150dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Dönüldü"
@@ -70,17 +82,17 @@
 
             <TextView
                 android:id="@+id/fiveTitle"
-                android:layout_width="180dp"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Kapandı"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textColor="@color/textColor"
                 android:textStyle="bold"
                 grid:layout_columnWeight="1" />
 
 
-        </LinearLayout>
+        </androidx.gridlayout.widget.GridLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

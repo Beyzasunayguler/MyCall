@@ -1,25 +1,23 @@
 package com.example.mycalls;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import androidx.fragment.app.Fragment;
-import androidx.gridlayout.widget.GridLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetailFragment extends Fragment {
+public class DetailActivity extends AppCompatActivity {
     private ProgressBar loadingBar;
     private RecyclerView mRecyclerView;
     private DetailAdapter detailAdapter;
@@ -27,15 +25,18 @@ public class DetailFragment extends Fragment {
     LinearLayout linearLayout;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View detailView = inflater.inflate(R.layout.fragment_detail, container, false);
-        linearLayout = (LinearLayout) detailView.findViewById(R.id.fragment_detail_grid_layout);
-        mRecyclerView = (RecyclerView) detailView.findViewById(R.id.recyclerView);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) detailView.findViewById(R.id.swipe_refresh_layout);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        loadingBar = (ProgressBar) detailView.findViewById(R.id.loadingBar);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail);
+        linearLayout = (LinearLayout) findViewById(R.id.fragment_detail_grid_layout);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        loadingBar = (ProgressBar) findViewById(R.id.loadingBar);
         detailAdapter = new DetailAdapter();//MainActivity.this,null
         mRecyclerView.setAdapter(detailAdapter);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -56,7 +57,7 @@ public class DetailFragment extends Fragment {
                     public void onFailure(Call<CallResult> call, Throwable t) {
                         loadingBar.setVisibility(View.GONE);
                         mSwipeRefreshLayout.setRefreshing(false);
-                        Toast.makeText(getContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
                         t.printStackTrace();
                     }
                 });
@@ -77,11 +78,9 @@ public class DetailFragment extends Fragment {
             @Override
             public void onFailure(Call<CallResult> call, Throwable t) {
                 loadingBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong \n" + t.getLocalizedMessage() + " url: " + call.request().url(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });
-        return detailView;
     }
-
 }

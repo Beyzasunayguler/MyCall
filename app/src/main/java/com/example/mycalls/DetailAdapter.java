@@ -45,6 +45,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
         TextView cekildiText;
         TextView donulduText;
         TextView kapandıText;
+        TextView idText;
 
         public DetailHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,29 +57,33 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
             cevaplandiText = itemView.findViewById(R.id.cevaplandıText);
             cekildiText = itemView.findViewById(R.id.cekildiText);
             donulduText = itemView.findViewById(R.id.donulduText);
+            idText=itemView.findViewById(R.id.idText);
 
-          if ("0".equals(data.cevaplandi)) {
-                cevaplandiText.setTextColor(Color.parseColor("#738b28"));
-                donulduText.setTextColor(Color.parseColor("#738b28"));
-                cekildiText.setTextColor(Color.parseColor("#738b28"));
-                caldiText.setTextColor(Color.parseColor("#738b28"));
-                kapandıText.setTextColor(Color.parseColor("#738b28"));
-            } else {
-                cevaplandiText.setTextColor(Color.BLACK);
+          if ("1".equals(data.cevaplandi)) {
+              cevaplandiText.setTextColor(Color.parseColor("#738b28"));
+              donulduText.setTextColor(Color.parseColor("#738b28"));
+              cekildiText.setTextColor(Color.parseColor("#738b28"));
+              caldiText.setTextColor(Color.parseColor("#738b28"));
+              kapandıText.setTextColor(Color.parseColor("#738b28"));
+              idText.setTextColor(Color.parseColor("#738b28"));
+
             }
 
-            if ("0".equals(data.donuldu)){
+            if ("1".equals(data.donuldu)){
                 donulduText.setTextColor(Color.parseColor("#FF5722"));
                 cekildiText.setTextColor(Color.parseColor("#FF5722"));
                 caldiText.setTextColor(Color.parseColor("#FF5722"));
                 kapandıText.setTextColor(Color.parseColor("#FF5722"));
                 cevaplandiText.setTextColor(Color.parseColor("#FF5722"));
-            } else if ("1".equals(data.cevaplandi) && "1".equals(data.donuldu)) {
+                idText.setTextColor(Color.parseColor("#FF5722"));
+
+            } else if ("0".equals(data.cevaplandi) && "0".equals(data.donuldu)) {
                 cevaplandiText.setTextColor(Color.parseColor("#FF0000"));
                 donulduText.setTextColor(Color.parseColor("#FF0000"));
                 cekildiText.setTextColor(Color.parseColor("#FF0000"));
                 caldiText.setTextColor(Color.parseColor("#FF0000"));
                 kapandıText.setTextColor(Color.parseColor("#FF0000"));
+                idText.setTextColor(Color.parseColor("#FF0000"));
             }
 
             kapandıText.setText(data.kapandi);
@@ -86,6 +91,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
             cevaplandiText.setText(data.cevaplandi);
             cekildiText.setText(data.cekildi);
             donulduText.setText(data.donuldu);
+            idText.setText(data.id);
 
 
         }

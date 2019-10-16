@@ -43,6 +43,22 @@ public class CallsModel implements Parcelable {
     @Expose
     public String mesaj;
 
+    @SerializedName("FirmaAdi")
+    @Expose
+    public String firmaAdi;
+    @SerializedName("SubeAdi")
+    @Expose
+    public String subeAdi;
+    @SerializedName("AramaZaman")
+    @Expose
+    public String aramaZaman;
+    @SerializedName("CalmaZaman")
+    @Expose
+    public String calmaZaman;
+    @SerializedName("KapatZaman")
+    @Expose
+    public String kapatZaman;
+
 
     protected CallsModel(Parcel in) {
         id = in.readString();
@@ -56,10 +72,15 @@ public class CallsModel implements Parcelable {
         kapandi = in.readString();
         donuldu = in.readString();
         mesaj=in.readString();
+        firmaAdi=in.readString();
+        subeAdi=in.readString();
+        aramaZaman=in.readString();
+        calmaZaman=in.readString();
+        kapatZaman=in.readString();
 
     }
 
-    public CallsModel(String id, String cagriId, String telNo, String kullanici, String zaman, String caldi, String cevaplandi,String cekildi, String kapandi, String donuldu,String mesaj) {
+    public CallsModel(String id, String cagriId, String telNo, String kullanici, String zaman, String caldi, String cevaplandi,String cekildi, String kapandi, String donuldu,String mesaj,String firmaAdi,String subeAdi,String aramaZaman,String calmaZaman,String kapatZaman) {
         this.id=id;
         this.cagriId=cagriId;
         this.telNo=telNo;
@@ -71,6 +92,11 @@ public class CallsModel implements Parcelable {
         this.kapandi=kapandi;
         this.donuldu=donuldu;
         this.mesaj=mesaj;
+        this.firmaAdi=firmaAdi;
+        this.subeAdi=subeAdi;
+        this.aramaZaman=aramaZaman;
+        this.calmaZaman=calmaZaman;
+        this.kapatZaman=kapatZaman;
     }
     public static final Creator<CallsModel> CREATOR = new Creator<CallsModel>() {
         @Override
@@ -88,6 +114,45 @@ public class CallsModel implements Parcelable {
         return CREATOR;
     }
 
+    public String getAramaZaman() {
+        return aramaZaman;
+    }
+
+    public void setAramaZaman(String aramaZaman) {
+        this.aramaZaman = aramaZaman;
+    }
+
+    public String getCalmaZaman() {
+        return calmaZaman;
+    }
+
+    public void setCalmaZaman(String calmaZaman) {
+        this.calmaZaman = calmaZaman;
+    }
+
+    public String getFirmaAdi() {
+        return firmaAdi;
+    }
+
+    public void setFirmaAdi(String firmaAdi) {
+        this.firmaAdi = firmaAdi;
+    }
+
+    public String getSubeAdi() {
+        return subeAdi;
+    }
+
+    public void setSubeAdi(String subeAdi) {
+        this.subeAdi = subeAdi;
+    }
+
+    public String getKapatZaman() {
+        return kapatZaman;
+    }
+
+    public void setKapatZaman(String kapatZaman) {
+        this.kapatZaman = kapatZaman;
+    }
 
     public String getCagriId() {
         return cagriId;
@@ -195,5 +260,10 @@ public class CallsModel implements Parcelable {
         parcel.writeString(cagriId);
         parcel.writeString(id);
         parcel.writeString(mesaj);
+        parcel.writeString(firmaAdi);
+        parcel.writeString(subeAdi);
+        parcel.writeString(aramaZaman);
+        parcel.writeString(calmaZaman);
+        parcel.writeString(kapatZaman);
     }
 }

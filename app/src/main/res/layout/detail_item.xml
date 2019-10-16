@@ -2,13 +2,16 @@
 <androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="45dp"
     android:layout_marginLeft="5dp"
-    android:layout_marginTop="16dp"
     android:layout_marginRight="5dp">
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
     <TextView
-        android:id="@+id/caldıText"
+        android:id="@+id/idText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -17,6 +20,26 @@
         android:textColor="@color/dataTextColor"
         android:textStyle="bold"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/caldıText"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_margin="10dp"
+        android:text="@string/deneme"
+        android:textSize="12dp"
+        android:textColor="@color/dataTextColor"
+        android:textStyle="bold"
+        grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/cevaplandıText"
@@ -28,6 +51,10 @@
         android:text="@string/deneme"
         android:textStyle="bold"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
 
     <TextView
@@ -40,6 +67,10 @@
         android:layout_margin="10dp"
         android:textStyle="bold"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
 
     <TextView
@@ -52,6 +83,10 @@
         android:layout_margin="10dp"
         android:textStyle="bold"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
 
     <TextView
@@ -64,6 +99,10 @@
         android:layout_margin="10dp"
         android:textStyle="bold"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
 
 </androidx.gridlayout.widget.GridLayout>

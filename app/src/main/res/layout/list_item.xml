@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_width="fill_parent"
+    android:layout_height="35dp"
     android:horizontalSpacing="2dp"
     android:numColumns="auto_fit"
     android:stretchMode="columnWidth"
-    android:verticalSpacing="2dp">
-
+    android:verticalSpacing="2dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp">
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
     <TextView
         android:id="@+id/id"
         android:layout_width="10dp"
@@ -19,8 +21,40 @@
         android:text="@string/kullan_c"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"
-        android:textStyle="bold"
+        android:textSize="12dp"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/firmaAdiText"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:text="@string/kullan_c"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        android:textSize="11dp"
+        grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+    <TextView
+        android:id="@+id/subeText"
+        android:layout_width="71dp"
+        android:layout_height="wrap_content"
+        android:text="@string/kullan_c"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        android:textSize="12dp"
+        grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
     <TextView
         android:id="@+id/textView"
@@ -29,8 +63,12 @@
         android:text="@string/kullan_c"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"
-        android:textStyle="bold"
+        android:textSize="12dp"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
     <TextView
         android:id="@+id/telnoText"
@@ -40,8 +78,13 @@
         android:text="@string/deneme"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"
-        android:textStyle="bold"
+        android:textSize="12dp"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
 
     <TextView
         android:id="@+id/zamanText"
@@ -50,7 +93,26 @@
         android:text="@string/deneme"
         android:textAlignment="center"
         android:textColor="@color/dataTextColor"
-        android:textStyle="bold"
+        android:textSize="12dp"
         grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
+
+
+    <TextView
+        android:id="@+id/kapamaZamanText"
+        android:layout_width="89dp"
+        android:layout_height="wrap_content"
+        android:text="@string/deneme"
+        android:textAlignment="center"
+        android:textColor="@color/dataTextColor"
+        android:textSize="12dp"
+        grid:layout_columnWeight="1" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000" />
 
 </androidx.gridlayout.widget.GridLayout>
