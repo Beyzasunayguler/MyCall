@@ -41,25 +41,11 @@ public class DetailActivity extends AppCompatActivity {
         detailAdapter = new DetailAdapter();//MainActivity.this,null
         mRecyclerView.setAdapter(detailAdapter);
         mRecyclerView.setHasFixedSize(true);
-        /*
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DATE);
-        String date = day + "." + (month + 1) + "." + (year);
-
-         */
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-               /* Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DATE);
-                String date = day + "." + (month + 1) + "." + (year);
 
-                */
                 MInterface mInterface = ApiClient.getClient().create(MInterface.class);
                 Call<CallResult> call = mInterface.getCalls();
                 call.enqueue(new Callback<CallResult>() {
@@ -84,7 +70,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
         MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-        Call<CallResult> call = mInterface.getCalls();
+        Call<CallResult> call = mInterface.getCallsWithDate(MainActivity.currentDate);
         call.enqueue(new Callback<CallResult>() {
             @Override
             public void onResponse(Call<CallResult> call, Response<CallResult> response) {

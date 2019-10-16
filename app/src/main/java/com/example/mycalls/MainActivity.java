@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private CallsAdapter callsAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
     GridLayout gridLayout;
-
+    public static String currentDate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,21 +62,13 @@ public class MainActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DATE);
-        String date = day + "." + (month + 1) + "." + (year);
-        //Toast.makeText(MainActivity.this, date, Toast.LENGTH_SHORT).show();
-
+        currentDate = day + "." + (month + 1) + "." + (year);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DATE);
-                String date = day + "." + (month + 1) + "." + (year);
-                //Toast.makeText(MainActivity.this, date, Toast.LENGTH_SHORT).show();
                 MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-                Call<CallResult> call = mInterface.getCallsWithDate(date);
+                Call<CallResult> call = mInterface.getCallsWithDate(currentDate);
                 call.enqueue(new Callback<CallResult>() {
                     @Override
                     public void onResponse(Call<CallResult> call, Response<CallResult> response) {
@@ -100,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-        Call<CallResult> call = mInterface.getCallsWithDate(date);
+        Call<CallResult> call = mInterface.getCallsWithDate(currentDate);
         call.enqueue(new Callback<CallResult>() {
             @Override
             public void onResponse(Call<CallResult> call, Response<CallResult> response) {
@@ -118,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
-
-
 
     }
 
@@ -139,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String calculatedDate = dayOfMonth + "." + (month + 1) + "." + (year);
+                currentDate = dayOfMonth + "." + (month + 1) + "." + (year);
                 MInterface mInterface = ApiClient.getClient().create(MInterface.class);
-                Call<CallResult> call = mInterface.getCallsWithDate(calculatedDate);
+                Call<CallResult> call = mInterface.getCallsWithDate(currentDate);
                 call.enqueue(new Callback<CallResult>() {
                     @Override
                     public void onResponse(Call<CallResult> call, Response<CallResult> response) {
@@ -159,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
-                //Toast.makeText(MainActivity.this, calculatedDate, Toast.LENGTH_SHORT).show();
             }
         }, year, month, day);
         datePickerDialog.show();

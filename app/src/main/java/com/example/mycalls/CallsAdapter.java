@@ -132,7 +132,6 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallsHolder>
                     int day = calendar.get(Calendar.DAY_OF_MONTH);
                     String calculatedDate = day + "." + (month + 1) + "." + (year);
                     intent.putExtra("infoKey", calculatedDate);
-                    Toast.makeText(itemView.getContext(), calculatedDate, Toast.LENGTH_SHORT).show();
                     itemView.getContext().startActivity(intent);
                     return true;
                 }
